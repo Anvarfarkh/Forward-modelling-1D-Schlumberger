@@ -152,14 +152,14 @@ with col1:
     if ok:
         # Create a figure using matplotlib
         fig, ax = plt.subplots(figsize=(7, 5))
-        ax.plot(AB2, rho_app, "o-", label="ρₐ (predicted)")  # normal plot first
-        ax.set_xscale("log")   # force x-axis logarithmic
-        ax.set_yscale("log")   # force y-axis logarithmic
+        ax.loglog(AB2, rho_app, "o-", label="ρₐ (predicted)")
         ax.grid(True, which="both", ls=":")
         ax.set_xlabel("AB/2 (m)")
         ax.set_ylabel("Apparent resistivity (Ω·m)")
         ax.set_title("Schlumberger VES (forward)")
         ax.legend()
+
+        # Show it inside Streamlit
         st.pyplot(fig, clear_figure=True)
 
         # Export results as CSV for external plotting (Excel, Python, etc.)
